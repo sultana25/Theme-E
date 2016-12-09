@@ -11,21 +11,30 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active">
-      <img src="<?php echo get_template_directory_uri();?>/img/slide1.jpg" alt="">
-      <div class="slider-caption">
-		<h2>WELCOME TO OUR LOGIC
-</h2>
-		<p>We Make Awesome Theme For Your Business</p>	
-      </div>
-    </div>
+      
+      
+      <?php
+global $post;
+$args = array( 'posts_per_page' => 5, 'post_type'=> 'slide' );
+$myposts = get_posts( $args );
+foreach( $myposts as $post ) : setup_postdata($post); ?>
     <div class="item">
       <img src="<?php echo get_template_directory_uri();?>/img/slide2.jpg" alt="">
       <div class="slider-caption">
-		<h2>WELCOME TO OUR LOGIC</h2>
-		<p>We Make Awesome Theme For Your Business</p>	
+		<h2><?php the_title();?></h2>
+		<p><?php the_excerpt();?></p>	
       </div>
     </div>
+
+<?php endforeach; ?>
+    <div class="item active">
+      <img src="<?php echo get_template_directory_uri();?>/img/slide1.jpg" alt="">
+      <div class="slider-caption">
+		<h2></h2>
+		<p></p>	
+      </div>
+    </div>
+    
   </div>
 
   <!-- Controls -->
